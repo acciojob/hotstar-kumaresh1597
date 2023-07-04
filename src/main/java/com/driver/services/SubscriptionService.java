@@ -40,7 +40,7 @@ public class SubscriptionService {
         subscription.setStartSubscriptionDate(new Date());
         subscription.setUser(user);
 
-        subscription = subscriptionRepository.save(subscription);
+        //subscription = subscriptionRepository.save(subscription);
 
         user.setSubscription(subscription);
         userRepository.save(user);
@@ -72,8 +72,7 @@ public class SubscriptionService {
             subscription.setTotalAmountPaid(elitePrice);
         }
 
-        user.setSubscription(subscription);
-        userRepository.save(user);
+        subscriptionRepository.save(subscription);
 
         return priceDifference;
     }
