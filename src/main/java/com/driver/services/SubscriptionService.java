@@ -10,6 +10,7 @@ import com.driver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -29,9 +30,9 @@ public class SubscriptionService {
         Subscription subscription = new Subscription();
         subscription.setSubscriptionType(subscriptionEntryDto.getSubscriptionType());
         subscription.setNoOfScreensSubscribed(subscriptionEntryDto.getNoOfScreensRequired());
-        if(subscription.getSubscriptionType().equals(SubscriptionType.BASIC)){
+        if(subscriptionEntryDto.getSubscriptionType().equals(SubscriptionType.BASIC)){
             subscription.setTotalAmountPaid(500+(200 * subscriptionEntryDto.getNoOfScreensRequired()));
-        } else if (subscription.getSubscriptionType().equals(SubscriptionType.PRO)) {
+        } else if (subscriptionEntryDto.getSubscriptionType().equals(SubscriptionType.PRO)) {
             subscription.setTotalAmountPaid(800 + (250 * subscriptionEntryDto.getNoOfScreensRequired()));
         } else {
             subscription.setTotalAmountPaid(1000 + (350 * subscriptionEntryDto.getNoOfScreensRequired()));
